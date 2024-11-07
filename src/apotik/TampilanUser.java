@@ -270,9 +270,8 @@ public class TampilanUser extends javax.swing.JFrame {
             U.setPassword(password);
             U.setLevel(level);
             U.setVisible(true);
-        } catch (Exception e) {
+        } catch (NumberFormatException e) {
             JOptionPane.showMessageDialog(this, "Error: " + e.getMessage());
-            e.printStackTrace();
         }
     } else {
         JOptionPane.showMessageDialog(this, "Anda belum memilih data");
