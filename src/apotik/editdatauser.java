@@ -1,5 +1,4 @@
 package apotik;
-import java.awt.HeadlessException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
@@ -16,11 +15,15 @@ import javax.swing.JOptionPane;
  */
 public class editdatauser extends javax.swing.JDialog {
     
-    private int idUser;
-    private String fullname;
-    private String username;
-    private String password;
-    private String level;
+    private int id;
+    private String NM;
+    private String US;
+    private String PS;
+    private String LV;
+    private String AL;
+    private String TL;
+    private String EM;
+
     /**
      * Creates new form 
      */
@@ -48,9 +51,15 @@ public class editdatauser extends javax.swing.JDialog {
         txtusername = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        txtlevel = new javax.swing.JComboBox<>();
         jButton4 = new javax.swing.JButton();
         txtpassword = new javax.swing.JPasswordField();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        txtemail = new javax.swing.JTextField();
+        txttelepon = new javax.swing.JTextField();
+        txtalamat = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -67,16 +76,16 @@ public class editdatauser extends javax.swing.JDialog {
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("TAMBAH USER");
+        jLabel1.setText("EDIT USER");
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(171, 171, 171)
+                .addGap(200, 200, 200)
                 .addComponent(jLabel1)
-                .addContainerGap(200, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -107,7 +116,7 @@ public class editdatauser extends javax.swing.JDialog {
             }
         });
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "admin", "owner", "kasir" }));
+        txtlevel.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "admin", "owner", "kasir" }));
 
         jButton4.setBackground(new java.awt.Color(255, 0, 0));
         jButton4.setForeground(new java.awt.Color(255, 255, 255));
@@ -118,37 +127,53 @@ public class editdatauser extends javax.swing.JDialog {
             }
         });
 
+        jLabel7.setText("Email        :");
+
+        jLabel8.setText("Telepon    :");
+
+        jLabel9.setText("Alamat     :");
+
+        txtemail.setText(" ");
+
+        txttelepon.setText(" ");
+
+        txtalamat.setText(" ");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(24, 24, 24)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(jButton4)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 297, Short.MAX_VALUE)
+                        .addComponent(jButton1))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(24, 24, 24)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel4))
+                        .addGap(40, 40, 40)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                .addComponent(jButton4)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jButton1))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel2)
-                                    .addComponent(jLabel4))
-                                .addGap(40, 40, 40)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(txtnama)
-                                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 362, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel5)
-                                    .addComponent(jLabel6))
-                                .addGap(18, 18, 18)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtpassword)
-                                    .addComponent(txtusername))))))
-                .addGap(0, 0, Short.MAX_VALUE))
+                            .addComponent(txtnama)
+                            .addComponent(txtlevel, javax.swing.GroupLayout.PREFERRED_SIZE, 362, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel5)
+                            .addComponent(jLabel6)
+                            .addComponent(jLabel7)
+                            .addComponent(jLabel8)
+                            .addComponent(jLabel9))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtpassword)
+                            .addComponent(txtusername)
+                            .addComponent(txtemail)
+                            .addComponent(txttelepon)
+                            .addComponent(txtalamat))))
+                .addGap(0, 23, Short.MAX_VALUE))
+            .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -161,7 +186,7 @@ public class editdatauser extends javax.swing.JDialog {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel4)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtlevel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
@@ -170,7 +195,19 @@ public class editdatauser extends javax.swing.JDialog {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
                     .addComponent(txtpassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel7)
+                    .addComponent(txtemail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel8)
+                    .addComponent(txttelepon, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel9)
+                    .addComponent(txtalamat, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 45, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
                     .addComponent(jButton4))
@@ -185,7 +222,10 @@ public class editdatauser extends javax.swing.JDialog {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         pack();
@@ -197,33 +237,40 @@ public class editdatauser extends javax.swing.JDialog {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        String fullName = txtnama.getText();
-        String username = txtusername.getText();
-        String password = new String(txtpassword.getPassword());
-        String level = jComboBox1.getSelectedItem().toString();
-        
-        String Q = "UPDATE users "
-                + "set fullname=?,"
-                + "username=?,"
-                + "password=?,"
-                + "level=? "
-                + "WHERE id=?";
+        String name = txtnama.getText();
+        String user = txtusername.getText();
+        String pass = new String(txtpassword.getPassword());
+        String level = txtlevel.getSelectedItem().toString();
+        String almt = txtalamat.getText();
+        String tlp = txttelepon.getText();
+        String email = txtemail.getText();
+
         try {
             Connection K = Koneksi.Go();
-            PreparedStatement P = K.prepareStatement(Q);
-            P.setString(1, fullName);
-            P.setString(2, username);
-            P.setString(3, password);
-            P.setString(4, level);
-            P.setInt(5, getIdUser());
-            P.executeUpdate();
-            
-            TampilanUser.viewData(""); 
-            JOptionPane.showMessageDialog(this, "Data berhasil disimpan");
-            txtnama.requestFocus();
-            this.dispose();
-        } catch (HeadlessException | SQLException e) {
-            //
+            String Q = "UPDATE users SET fullname=?, username=?, password=?, level=?, alamat=?, telepon=?, email=? WHERE id=?";
+            PreparedStatement PSt = K.prepareStatement(Q);
+            PSt.setString(1, name);
+            PSt.setString(2, user);
+            PSt.setString(3, pass);
+            PSt.setString(4, level);
+            PSt.setString(5, almt);
+            PSt.setString(6, tlp);
+            PSt.setString(7, email);
+            PSt.setInt(8, id);
+            int rowsUpdated = PSt.executeUpdate();
+
+            if (rowsUpdated > 0) {
+                TampilanUser.viewData("");
+                function.savelog(" Perubahan user "+name+" berhasil "); 
+                JOptionPane.showMessageDialog(this, "Data berhasil diperbarui");
+                txtnama.requestFocus();
+                this.dispose();
+            } else {
+                JOptionPane.showMessageDialog(this, "Gagal memperbarui data");
+            }
+
+        } catch (SQLException | NumberFormatException e) {
+            JOptionPane.showMessageDialog(this, "Error: " + e.getMessage());
         }
 
         
@@ -236,10 +283,13 @@ public class editdatauser extends javax.swing.JDialog {
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         // TODO add your handling code here:
-        txtnama.setText(getFullname()); 
-        txtusername.setText(getUsername()); 
-        txtpassword.setText(getPassword()); 
-        jComboBox1.setSelectedItem(getLevel()); 
+        txtnama.setText(getNM()); 
+        txtusername.setText(getUS());
+        txtpassword.setText(getPS()); 
+        txtlevel.setSelectedItem(getLV()); 
+        txtalamat.setText(getAL());    
+        txttelepon.setText(getTL());
+        txtemail.setText(getEM());
     }//GEN-LAST:event_formWindowOpened
 
     /**
@@ -287,56 +337,87 @@ public class editdatauser extends javax.swing.JDialog {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton4;
-    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JTextField txtalamat;
+    private javax.swing.JTextField txtemail;
+    private javax.swing.JComboBox<String> txtlevel;
     private javax.swing.JTextField txtnama;
     private javax.swing.JPasswordField txtpassword;
+    private javax.swing.JTextField txttelepon;
     private javax.swing.JTextField txtusername;
     // End of variables declaration//GEN-END:variables
 
-    public int getIdUser() {
-        return idUser;
+    public int getId() {
+        return id;
     }
 
-    public void setIdUser(int idUser) {
-        this.idUser = idUser;
+    public void setId(int id) {
+        this.id = id;
     }
 
-    public String getFullname() {
-        return fullname;
+    public String getNM() {
+        return NM;
+    }
+    
+
+    public void setNM(String NM) {
+        this.NM = NM;
     }
 
-    public void setFullname(String fullname) {
-        this.fullname = fullname;
+    public String getUS() {
+        return US;
     }
 
-    public String getUsername() {
-        return username;
+    public void setUS(String US) {
+        this.US = US;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public String getPS() {
+        return PS;
     }
 
-    public String getPassword() {
-        return password;
+    public void setPS(String PS) {
+        this.PS = PS;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    public String getLV() {
+        return LV;
     }
 
-    public String getLevel() {
-        return level;
+    public void setLV(String LV) {
+        this.LV = LV;
+    }
+    
+    public String getAL() {
+        return AL;
     }
 
-    public void setLevel(String level) {
-        this.level = level;
+    public void setAL(String AL) {
+        this.AL = AL;
+    }
+    
+    public String getTL() {
+        return TL;
+    }
+
+    public void setTL(String TL) {
+        this.TL = TL;
+    }
+    
+    public String getEM() {
+        return EM;
+    }
+
+    public void setEM(String EM) {
+        this.EM = EM;
     }
 }

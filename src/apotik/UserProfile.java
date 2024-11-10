@@ -14,6 +14,9 @@ public class UserProfile {
     private String username;
     private String password;
     private String level;
+    private String alamat;
+    private String telepon;
+    private String email;
 
     public int getId() {
         return id;
@@ -56,4 +59,28 @@ public class UserProfile {
     }
     
     
+    public String getAlamat() {
+        return alamat;
+    }
+
+    public void setAlamat(String alamat) {
+        this.alamat = alamat;
+    }
+    
+    public String getTelepon() {
+        return telepon;
+    }
+
+    public void setTelepon(String telepon) {
+        this.telepon = telepon;
+    }
+    
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
 }

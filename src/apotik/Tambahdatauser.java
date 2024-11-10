@@ -4,12 +4,11 @@
  */
 package apotik;
 
-import com.sun.jdi.connect.spi.Connection;
-import java.awt.HeadlessException;
+
+import java.sql.Connection;
+//import java.sql.Statement;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
@@ -35,6 +34,12 @@ public class Tambahdatauser extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabel7 = new javax.swing.JLabel();
+        txtemail = new javax.swing.JTextField();
+        jLabel8 = new javax.swing.JLabel();
+        txttelepon = new javax.swing.JTextField();
+        jLabel9 = new javax.swing.JLabel();
+        txtalamat = new javax.swing.JTextField();
         jPanel1 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
@@ -45,9 +50,27 @@ public class Tambahdatauser extends javax.swing.JDialog {
         txtusername = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        txtlevel = new javax.swing.JComboBox<>();
         jButton4 = new javax.swing.JButton();
         txtpassword = new javax.swing.JPasswordField();
+        jLabel10 = new javax.swing.JLabel();
+        txtemail1 = new javax.swing.JTextField();
+        jLabel11 = new javax.swing.JLabel();
+        txttelepon1 = new javax.swing.JTextField();
+        jLabel12 = new javax.swing.JLabel();
+        txtalamat1 = new javax.swing.JTextField();
+
+        jLabel7.setText("Email        :");
+
+        txtemail.setText(" ");
+
+        jLabel8.setText("Telepon    :");
+
+        txttelepon.setText(" ");
+
+        jLabel9.setText("Alamat     :");
+
+        txtalamat.setText(" ");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -99,7 +122,7 @@ public class Tambahdatauser extends javax.swing.JDialog {
             }
         });
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "admin", "owner", "kasir" }));
+        txtlevel.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "admin", "owner", "kasir" }));
 
         jButton4.setBackground(new java.awt.Color(255, 0, 0));
         jButton4.setForeground(new java.awt.Color(255, 255, 255));
@@ -110,6 +133,18 @@ public class Tambahdatauser extends javax.swing.JDialog {
             }
         });
 
+        jLabel10.setText("Email        :");
+
+        txtemail1.setText(" ");
+
+        jLabel11.setText("Telepon    :");
+
+        txttelepon1.setText(" ");
+
+        jLabel12.setText("Alamat     :");
+
+        txtalamat1.setText(" ");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -118,7 +153,7 @@ public class Tambahdatauser extends javax.swing.JDialog {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(24, 24, 24)
+                        .addGap(22, 22, 22)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                                 .addComponent(jButton4)
@@ -131,7 +166,7 @@ public class Tambahdatauser extends javax.swing.JDialog {
                                 .addGap(40, 40, 40)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(txtnama)
-                                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 362, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addComponent(txtlevel, javax.swing.GroupLayout.PREFERRED_SIZE, 362, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel5)
@@ -139,7 +174,17 @@ public class Tambahdatauser extends javax.swing.JDialog {
                                 .addGap(18, 18, 18)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(txtpassword)
-                                    .addComponent(txtusername))))))
+                                    .addComponent(txtusername)))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel10)
+                                    .addComponent(jLabel11)
+                                    .addComponent(jLabel12))
+                                .addGap(18, 18, 18)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(txtemail1)
+                                    .addComponent(txttelepon1)
+                                    .addComponent(txtalamat1))))))
                 .addGap(0, 0, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -153,7 +198,7 @@ public class Tambahdatauser extends javax.swing.JDialog {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel4)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtlevel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
@@ -162,7 +207,19 @@ public class Tambahdatauser extends javax.swing.JDialog {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
                     .addComponent(txtpassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel10)
+                    .addComponent(txtemail1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel11)
+                    .addComponent(txttelepon1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel12)
+                    .addComponent(txtalamat1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 49, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
                     .addComponent(jButton4))
@@ -177,7 +234,9 @@ public class Tambahdatauser extends javax.swing.JDialog {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
@@ -189,30 +248,44 @@ public class Tambahdatauser extends javax.swing.JDialog {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        String fullName = txtnama.getText();
-        String username = txtusername.getText();
-        String password = new String(txtpassword.getPassword());
-        String level = jComboBox1.getSelectedItem().toString();
-
-        String Q = "INSERT INTO users "
-        + "(fullname,username,password,level) "
-        + "VALUES "
-        + "(?,?,?,?)";
+        String name = txtnama.getText();
+        String user = txtusername.getText();
+        String pass = new String(txtpassword.getPassword());
+        String level = txtlevel.getSelectedItem().toString();
+        String almt = txtalamat1.getText();
+        String tlp = txttelepon.getText();
+        String email = txtemail1.getText();
+        
+        
+        //pengecekan
+        
         try {
-            java.sql.Connection K = Koneksi.Go();
-            PreparedStatement P = K.prepareStatement(Q);
-            P.setString(1, fullName);
-            P.setString(2, username);
-            P.setString(3, password);
-            P.setString(4, level);
-            P.executeUpdate();
+            Connection K = Koneksi.Go();
+            String Q = "INSERT INTO users "
+                    + "(fullname,username,password,level,alamat,telepon,email) "
+                    + "VALUES (?,?,?,?,?,?,?)";
+            PreparedStatement PS = K.prepareStatement(Q);
+            PS.setString(1, name);
+            PS.setString(2, user);
+            PS.setString(3, pass);
+            PS.setString(4, level);
+            PS.setString(5, almt);
+            PS.setString(6, tlp);
+            PS.setString(7, email);
+            int rowsUpdated = PS.executeUpdate();
 
-            TampilanUser.viewData("");
-            JOptionPane.showMessageDialog(this, "Data berhasil disimpan");
-            txtnama.requestFocus();
-            this.dispose();
-        } catch (HeadlessException | SQLException e) {
-            //
+            if (rowsUpdated > 0) {
+                TampilanUser.viewData("");
+                function.savelog(" Penambahan user "+name+" berhasil "); 
+                JOptionPane.showMessageDialog(this, "Data berhasil disimpan");
+                txtnama.requestFocus();
+                this.dispose();
+            } else {
+                JOptionPane.showMessageDialog(this, "Gagal menambahkan data");
+            }
+
+        } catch (SQLException | NumberFormatException e) {
+            JOptionPane.showMessageDialog(this, "Error: " + e.getMessage());
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -266,16 +339,28 @@ public class Tambahdatauser extends javax.swing.JDialog {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton4;
-    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JTextField txtalamat;
+    private javax.swing.JTextField txtalamat1;
+    private javax.swing.JTextField txtemail;
+    private javax.swing.JTextField txtemail1;
+    private javax.swing.JComboBox<String> txtlevel;
     private javax.swing.JTextField txtnama;
     private javax.swing.JPasswordField txtpassword;
+    private javax.swing.JTextField txttelepon;
+    private javax.swing.JTextField txttelepon1;
     private javax.swing.JTextField txtusername;
     // End of variables declaration//GEN-END:variables
 }

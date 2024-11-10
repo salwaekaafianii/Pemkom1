@@ -5,11 +5,10 @@
 package apotik;
 
 import java.awt.Frame;
-import java.awt.HeadlessException;
 import java.sql.Connection;
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import javax.swing.JOptionPane;
 
 /**
@@ -260,55 +259,66 @@ public class Login extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
   
     private void login() {
-        String user = txtUsername.getText();
+        String  user = txtUsername.getText();
         String pass = new String(txtPassword.getPassword());
-
         try {
+            Connection c = Koneksi.Go();
+            Statement s = c.createStatement();
+            String sql = "SELECT * FROM `users` WHERE username='"+user+"' AND password='"+pass+"';";
+            ResultSet r = s.executeQuery(sql);
+            int status = 0;
+            int id;
+            String nm, us, ps, lv = null;
+            UserProfile up = new UserProfile();
+            while (r.next()) {                 
+                id = r.getInt("id");
+                nm = r.getString("fullname");
+                us = r.getString("username");
+                ps = r.getString("password");
+                lv = r.getString("level");
+                String alamat = r.getString("alamat"); // Ambil alamat
+                String telepon = r.getString("telepon"); // Ambil telepon
+                String email = r.getString("email"); // Ambil email
 
-            Connection K = Koneksi.Go();
-            String Q = "SELECT * FROM `users` WHERE username=? AND password=?;";
-            PreparedStatement S = K.prepareStatement(Q);
-            S.setString(1, user);
-            S.setString(2, pass);
-            ResultSet R = S.executeQuery();
-            int count = 0;
-            UserProfile P = new UserProfile();
-            while (R.next()) {
-                P.setId(R.getInt("id"));
-                P.setFullname(R.getString("fullname"));
-                P.setUsername(R.getString("username"));
-                P.setPassword(R.getString("password"));
-                P.setLevel(R.getString("level"));
-                count++;
+                up.setId(id);
+                up.setFullname(nm);
+                up.setUsername(us);
+                up.setPassword(ps);
+                up.setLevel(lv);
+                up.setAlamat(alamat); // Set alamat
+                up.setTelepon(telepon); // Set telepon
+                up.setEmail(email); // Set email 
+                status++;
             }
 
-            if (count > 0) {
-                //JOptionPane.showMessageDialog(this, "Sukses Login");
-                if (P.getLevel().equals("admin")) {
-                    HalamanAdmin O = new HalamanAdmin(P);
-                    O.setExtendedState(Frame.MAXIMIZED_BOTH);
+            if (status > 0) {
+                // Login berhasil
+                function.savelog("Login berhasil - Username: " + user + " (Level: " + lv + ")");
+
+                if (lv.equals("kasir")) {
                     this.setVisible(false);
-                    O.setVisible(true);
-                } else if (P.getLevel().equals("kasir")) {
-                    HalamanKasir O = new HalamanKasir();
-                    O.setExtendedState(Frame.MAXIMIZED_BOTH);
+                    HalamanKasir hk = new HalamanKasir();
+                    hk.setVisible(true);
+                } else if (lv.equals("admin")) {
                     this.setVisible(false);
-                    O.setVisible(true);
-                } else if (P.getLevel().equals("owner")) {
-                    HalamanOwner O = new HalamanOwner();
-                    O.setExtendedState(Frame.MAXIMIZED_BOTH);
+                    HalamanAdmin ha = new HalamanAdmin(up);
+                    ha.setVisible(true);
+                } else if (lv.equals("owner")) {
                     this.setVisible(false);
-                    O.setVisible(true);
+                    HalamanOwner ho = new HalamanOwner();
+                    ho.setVisible(true);
                 }
             } else {
-                JOptionPane.showMessageDialog(this, "Invalid username/password");
-                txtUsername.requestFocus();
+                // Login gagal
+                function.savelog("Login gagal - Username: " + user + " (Username/Password tidak valid)");
+                JOptionPane.showMessageDialog(this, "GAGAL Login\n" + "Username/Password tidak valid");
+                txtPassword.requestFocus();
             }
 
-        } catch (HeadlessException | SQLException e) {
-            System.err.println(e.getMessage());
+        } catch (SQLException e) {
+            // Log error dengan detail
+            function.savelog("Error pada proses login - Username: " + user + " - Error: " + e.getMessage());
         }
-
-    }
+        }
 }
 

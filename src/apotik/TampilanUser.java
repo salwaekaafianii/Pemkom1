@@ -8,6 +8,7 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -23,6 +24,7 @@ public class TampilanUser extends javax.swing.JFrame {
      */
     public TampilanUser() {
         initComponents();
+        this.setExtendedState(JFrame.MAXIMIZED_BOTH);
         viewData("");
         
   
@@ -58,6 +60,7 @@ public class TampilanUser extends javax.swing.JFrame {
         txtcari = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         jButton4 = new javax.swing.JButton();
+        jButton5 = new javax.swing.JButton();
 
         jButton2.setText("jButton2");
 
@@ -74,8 +77,6 @@ public class TampilanUser extends javax.swing.JFrame {
 
         jPanel3.setBackground(new java.awt.Color(0, 0, 102));
 
-        jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/_0fcacfe4-71c0-466e-956a-27726ab61326-removebg-preview.png"))); // NOI18N
-
         jLabel2.setFont(new java.awt.Font("Modern No. 20", 0, 18)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("APOTEK MARI");
@@ -86,20 +87,18 @@ public class TampilanUser extends javax.swing.JFrame {
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGap(29, 29, 29)
-                .addComponent(jLabel9)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel2)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel2)
+                    .addComponent(jLabel9))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addContainerGap(18, Short.MAX_VALUE)
+                .addContainerGap(21, Short.MAX_VALUE)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel9)
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(jLabel2)
-                        .addGap(3, 3, 3)))
+                    .addComponent(jLabel2)
+                    .addComponent(jLabel9))
                 .addGap(20, 20, 20))
         );
 
@@ -110,19 +109,23 @@ public class TampilanUser extends javax.swing.JFrame {
 
         tabeluser.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null}
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "Id", "No", "Nama", "Username", "Password", "Role"
+                "Id", "No", "Nama", "Username", "Password", "Role", "Alamat", "Telepon", "Email"
             }
         ));
         jScrollPane1.setViewportView(tabeluser);
+        if (tabeluser.getColumnModel().getColumnCount() > 0) {
+            tabeluser.getColumnModel().getColumn(6).setResizable(false);
+            tabeluser.getColumnModel().getColumn(7).setResizable(false);
+        }
 
         jButton1.setBackground(new java.awt.Color(0, 0, 102));
         jButton1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
@@ -203,6 +206,8 @@ public class TampilanUser extends javax.swing.JFrame {
                 .addGap(85, 85, 85))
         );
 
+        jButton5.setText("Kembali");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -210,8 +215,11 @@ public class TampilanUser extends javax.swing.JFrame {
             .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(35, 35, 35)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButton5))
                     .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -219,9 +227,15 @@ public class TampilanUser extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButton5)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(117, 117, 117))
         );
@@ -249,33 +263,35 @@ public class TampilanUser extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void txtcariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtcariActionPerformed
-        // TODO add your handling code here:
+       
+        
     }//GEN-LAST:event_txtcariActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
     int n = tabeluser.getSelectedRow();
-    if(n != -1){
-        try {
+        if(n != -1){
             int id = Integer.parseInt(tabeluser.getValueAt(n, 0).toString());
-            String fullname = tabeluser.getValueAt(n, 2).toString();
-            String username = tabeluser.getValueAt(n, 3).toString();
-            String password = tabeluser.getValueAt(n, 4).toString();
-            String level = tabeluser.getValueAt(n, 5).toString();
-            
+            String NM = tabeluser.getValueAt(n, 2).toString();
+            String UN = tabeluser.getValueAt(n, 3).toString();
+            String PS = tabeluser.getValueAt(n, 4).toString();
+            String LV = tabeluser.getValueAt(n, 5).toString();
+            String AL = tabeluser.getValueAt(n, 6).toString();
+            String TL = tabeluser.getValueAt(n, 7).toString();
+            String EM = tabeluser.getValueAt(n, 8).toString();
             editdatauser U = new editdatauser(this, true);
-            U.setIdUser(id);
-            U.setFullname(fullname);
-            U.setUsername(username);
-            U.setPassword(password);
-            U.setLevel(level);
+            U.setId(id);
+            U.setNM(NM);
+            U.setUS(UN);
+            U.setPS(PS);
+            U.setLV(LV);
+            U.setAL(AL);
+            U.setTL(TL);
+            U.setEM(EM);
             U.setVisible(true);
-        } catch (NumberFormatException e) {
-            JOptionPane.showMessageDialog(this, "Error: " + e.getMessage());
+        } else {
+            JOptionPane.showMessageDialog(this, "Pilih data yang akan diedit");
         }
-    } else {
-        JOptionPane.showMessageDialog(this, "Anda belum memilih data");
-    }
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
@@ -283,32 +299,30 @@ public class TampilanUser extends javax.swing.JFrame {
         int n = tabeluser.getSelectedRow();
         if(n != -1){
             int id = Integer.parseInt(tabeluser.getValueAt(n, 0).toString());
-            String fullname = tabeluser.getValueAt(n, 2).toString();
-//            JOptionPane.showMessageDialog(this, id); 
+            String nama = tabeluser.getValueAt(n, 2).toString();
             
-            int pilihan = JOptionPane.showConfirmDialog(this, 
-                    "Apakah Anda yakin untuk menghapus data "+fullname+"?",
-                    "Hapus Data",JOptionPane.YES_NO_OPTION);
-            if(pilihan == 0){
-                //yes
-                String Q = "DELETE FROM users WHERE id="+id+" ";
+            
+            int opsi = JOptionPane.showConfirmDialog(this, 
+                    "Apakah Anda yakin ingin menghapus data "+nama+"?", 
+                    "Hapus Data", 
+                    JOptionPane.YES_NO_OPTION);
+            if(opsi == 0){
+                String Q = "DELETE FROM users "
+                        + "WHERE id="+id;
+                
                 try {
                     Connection K = Koneksi.Go();
                     Statement S = K.createStatement();
                     S.executeUpdate(Q);
                     viewData(""); 
-                    JOptionPane.showMessageDialog(this, "Data "+fullname+" telah terhapus");
+                    JOptionPane.showMessageDialog(this, "Data "+nama+" telah terhapus");
+                    function.savelog(" user "+nama+" berhasil dihapus "); 
                 } catch (SQLException e) {
                 }
-            }else {
-                //no
             }
-
-            
             
         }else {
-            JOptionPane.showMessageDialog(this, "Anda belum memilih data"); 
-        
+            JOptionPane.showMessageDialog(this, "Anda belum memilih data");
         }
     }//GEN-LAST:event_jButton4ActionPerformed
 
@@ -318,10 +332,12 @@ public class TampilanUser extends javax.swing.JFrame {
         String w = "WHERE "
                 + "fullname LIKE '%"+key+"%' "
                 + "OR username LIKE '%"+key+"%' "
-                + "OR passwor"
-                + "d LIKE '%"+key+"%' "
-                + "OR level LIKE '%"+key+"%'";
-        viewData(w); 
+                + "OR password LIKE '%"+key+"%' "
+                + "OR level LIKE '%"+key+"%' " 
+                + "OR alamat LIKE '%"+key+"%' "
+                + "OR telepon LIKE '%"+key+"%' "
+                + "OR email LIKE '%"+key+"%'";
+        viewData(w);  
     }//GEN-LAST:event_txtcariKeyReleased
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
@@ -370,6 +386,7 @@ public class TampilanUser extends javax.swing.JFrame {
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButton5;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -384,6 +401,7 @@ public class TampilanUser extends javax.swing.JFrame {
     private static javax.swing.JTable tabeluser;
     private javax.swing.JTextField txtcari;
     // End of variables declaration//GEN-END:variables
+
     public static void viewData(String where) {
         try {
             DefaultTableModel m = (DefaultTableModel) tabeluser.getModel();
@@ -395,11 +413,14 @@ public class TampilanUser extends javax.swing.JFrame {
             int n = 1;
             while (R.next()) {                 
                 int id = R.getInt("id");
-                String fullname = R.getString("fullname");
+                String nama = R.getString("fullname");
                 String username = R.getString("username");
                 String password = R.getString("password");
                 String level = R.getString("level");
-                Object[] data = {id, n, fullname, username, password, level};
+                String alamat = R.getString("alamat");
+                String telepon = R.getString("telepon");
+                String email = R.getString("email");
+                Object[] data = {id, n, nama, username, password, level, alamat, telepon, email};
                 m.addRow(data); 
                 n++;
             }
